@@ -1,17 +1,11 @@
-@page "/catalog/products"
-@attribute [MustHavePermission(FSHAction.View, FSHResource.Products)]
+﻿@page "/motocare/articlefiles"
+@attribute [MustHavePermission(FSHAction.View, FSHResource.Motocare)]
 
-@inject IStringLocalizer<Products> L
+@inject IStringLocalizer<ArticleFiles> L
 
-<FshTitle Title="@L["Products"]" Description="@L["Manage Products."]" />
+<FshTitle Title="@L["Motocare"]" Description="@L["Manage Article Files."]" />
 
-<EntityTable @ref="_table" TEntity="ProductDto" TId="Guid" TRequest="ProductViewModel" Context="@Context">
-
-    <AdvancedSearchContent>
-        <BrandAutocomplete @bind-Value="SearchBrandId" />
-        <MudSlider T="decimal" @bind-value="SearchMinimumRate" Min="0" Max="9999" Step="100">@L["Minimum Rate"]: @_searchMinimumRate.ToString()</MudSlider>
-        <MudSlider T="decimal" @bind-value="SearchMaximumRate" Min="0" Max="9999" Step="100">@L["Maximum Rate"]: @_searchMaximumRate.ToString()</MudSlider>
-    </AdvancedSearchContent>
+<EntityTable @ref="_table" TEntity="ArticleFileDto" TId="Guid" TRequest="ProductViewModel" Context="@Context">
 
     <EditFormContent>
         @if (!Context.AddEditModal.IsCreate)
